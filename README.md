@@ -23,12 +23,13 @@ Project Overview
 🔹Packet-Level Analysis: Examined packet headers, payloads, and protocol-specific fields
 
 🔐 Security Assessment Techniques
-    ==============================
+   ==============================
+   
 🔹SYN Scanning: Performed and identified port scanning activities, understanding how attackers map network services
 
 🔹Traffic Pattern Recognition: Distinguished between legitimate traffic and potential malicious activities
 
-Technical Environment
+Technical Environment:
 
 🔹Attack Machine: Kali Linux
 
