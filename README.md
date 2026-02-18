@@ -59,9 +59,12 @@ Wireshark Filters to Detect Scans example: tcp.flags.syn == 1 && tcp.flags.ack =
 
 
 
-6.Wireshark Packet Filtering - Packet filtering in Wireshark allows you to isolate specific traffic from large packet captures, making analysis manageable and focused.If the filter is Applied before capturing packets It would only capture the packets which is needed and Only matching packets are stored 
+ 6.Wireshark Packet Filtering - Packet filtering in Wireshark allows you to isolate specific traffic from large packet captures, making analysis manageable and focused.If the filter is Applied before capturing packets It would only capture the packets which is needed and Only matching packets are stored 
+
 
 Common Protocol Filters
+=======================
+
  
   🖧 HTTP Filters  = http : Show all HTTP traffic    ip.src == 192.168.1.10 and http :  Show HTTP traffic from specific IP
   
@@ -72,12 +75,19 @@ Common Protocol Filters
    🖧 Normal HTTP Traffic = http and ip.addr == 192.168.1.10 and ip.addr == 192.168.1.100 :  Show complete HTTP conversation  ,  tcp.flags.syn == 1 and ip.addr == 192.168.1.10 or ip.addr == 192.168.1.100 : Show TCP handshake before HTTP 
 
 
-   7.Basic Traffic Analysis - Basic traffic analysis refers to the fundamental skill of examining network packets to understand what is happening on the network, identify communication patterns, and detect normal     vs. abnormal behavior.After completing this project I could look at the captured packets and extracting meaningful information without advanced tools—just observing, filtering, and interpreting confidently.I'm Knowledgeable about Packet Examination or Identification ,  ICMP Traffic Analysis (Ping) ,  TCP Handshake Analysis , SYN Scanning Analysis ,  HTTP Traffic Analysis ,  Packet Filtering Practice by doing this projects.
+
+  7.Basic Traffic Analysis - Basic traffic analysis refers to the fundamental skill of examining network packets to understand what is happening on the network, identify communication patterns, and detect normal   vs abnormal behavior.After completing this project I could look at the captured packets and extracting meaningful information without advanced tools—just observing, filtering, and interpreting confidently.I'm    Knowledgeable about Packet Examination or Identification ,  ICMP Traffic Analysis (Ping) ,  TCP Handshake Analysis , SYN Scanning Analysis ,  HTTP Traffic Analysis ,  Packet Filtering Practice by doing this      projects.
+  
 
    
    
   🐧 PYTHON TRAFFIC SIMULATOR SCRIPT USED FOR THE PROJECT
+  ________________________________________________________
+
+  
    Purpose  -  A multi-threaded Python script designed to generate HTTP traffic for network analysis and DoS simulation in a controlled lab environment
+   =======
+
 
               
  KEY FEATURES
@@ -99,6 +109,8 @@ Common Protocol Filters
 
 
 🐧 This Simulates Light traffic load on web server and Multiple concurrent connections from single source It Uses Raw socket communication (bypasses browser/curl) and Basic HTTP flood pattern for DoS analysis
+
+
    
 🐧 Wireshark Observations - When running this script from Kali to Ubuntu, Wireshark captures packets Rapidly TCP handshakes (SYN, SYN-ACK, ACK).HTTP GET requests , TCP connection terminations,Pattern of requests from same source IP can be identify and Using iptables (native Linux firewall) on your Ubuntu machine you can block a specific IP if needed so packets are'nt send to you.
                 
