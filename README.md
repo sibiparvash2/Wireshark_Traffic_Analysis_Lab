@@ -77,12 +77,20 @@ Common Protocol Filters
    Purpose  -  A multi-threaded Python script designed to generate HTTP traffic for network analysis and DoS simulation in a controlled lab environment
 
               Key Features
+
 🐍Component	                     Description
+
 🐍Language	        -      Python 3 with socket and threading libraries
+
 🐍Target	          -      Ubuntu victim machine (IP: 192.168.x.x, Port: 80)
+
 🐍Traffic Type	    -      HTTP GET requests to root directory
+
 🐍Concurrency	      -      10 simultaneous threads
+
 🐍Request Volume	  -      100 requests per thread (1000 total requests)
+
+
 
 🐧 This Simulates Light traffic load on web server and Multiple concurrent connections from single source It Uses Raw socket communication (bypasses browser/curl) and Basic HTTP flood pattern for DoS analysis
    
