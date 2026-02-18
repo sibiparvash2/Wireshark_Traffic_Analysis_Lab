@@ -39,7 +39,7 @@ Technical Environment:
 
 
   🌐 PROJECT SUMMARY 
-     ================
+  ====================
 
      
   Wireshark Traffic Analysis Lab
@@ -105,7 +105,7 @@ Common Protocol Filters
 
  
   5️⃣PYTHON TRAFFIC SIMULATOR SCRIPT USED FOR THE PROJECT
-  ________________________________________________________
+  =======================================================
 
   
    Purpose  -  A multi-threaded Python script designed to generate HTTP traffic for network analysis and DoS simulation in a controlled lab environment
