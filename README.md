@@ -67,12 +67,12 @@ Common Protocol Filters
   
   🖧 SYN Packet Filters = tcp.flags.syn == 1 and tcp.flags.ack == 0 : Show all SYN packets (without ACK)  ,  tcp.flags.syn == 1 :  Show all SYN packets (including SYN-ACK)
   
-  🖧 ACK Packet Filters = tcp.flags.ack == 1 :  Show all ACK packets  ,  ip.addr == 192.168.1.10 and ip.addr == 192.168.1.100 and tcp.flags.ack == 1 : Show ACK packets in a specific conversation
+   🖧 ACK Packet Filters = tcp.flags.ack == 1 :  Show all ACK packets  ,  ip.addr == 192.168.1.10 and ip.addr == 192.168.1.100 and tcp.flags.ack == 1 : Show ACK packets in a specific conversation
   
-  🖧 Normal HTTP Traffic = http and ip.addr == 192.168.1.10 and ip.addr == 192.168.1.100 :  Show complete HTTP conversation  ,  tcp.flags.syn == 1 and ip.addr == 192.168.1.10 or ip.addr == 192.168.1.100 : Show TCP handshake before HTTP 
+   🖧 Normal HTTP Traffic = http and ip.addr == 192.168.1.10 and ip.addr == 192.168.1.100 :  Show complete HTTP conversation  ,  tcp.flags.syn == 1 and ip.addr == 192.168.1.10 or ip.addr == 192.168.1.100 : Show TCP handshake before HTTP 
 
 
-  7.Basic Traffic Analysis - Basic traffic analysis refers to the fundamental skill of examining network packets to understand what is happening on the network, identify communication patterns, and detect normal     vs. abnormal behavior.After completing this project I could look at the captured packets and extracting meaningful information without advanced tools—just observing, filtering, and interpreting confidently.I'm Knowledgeable about Packet Examination or Identification ,  ICMP Traffic Analysis (Ping) ,  TCP Handshake Analysis , SYN Scanning Analysis ,  HTTP Traffic Analysis ,  Packet Filtering Practice by doing this projects.
+   7.Basic Traffic Analysis - Basic traffic analysis refers to the fundamental skill of examining network packets to understand what is happening on the network, identify communication patterns, and detect normal     vs. abnormal behavior.After completing this project I could look at the captured packets and extracting meaningful information without advanced tools—just observing, filtering, and interpreting confidently.I'm Knowledgeable about Packet Examination or Identification ,  ICMP Traffic Analysis (Ping) ,  TCP Handshake Analysis , SYN Scanning Analysis ,  HTTP Traffic Analysis ,  Packet Filtering Practice by doing this projects.
 
    
    
