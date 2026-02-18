@@ -66,7 +66,8 @@ Technical Environment:
 
  - Ensured controlled and safe testing environment
    
- - ![TCP SYN Packets](images/kali_Network _bridged_adapter.png)
+ - ![TCP SYN Packets](images/kali_Network_bridged_adapter.png)
+
  
 
 2️⃣ Traffic Monitoring & Packet Analysis
