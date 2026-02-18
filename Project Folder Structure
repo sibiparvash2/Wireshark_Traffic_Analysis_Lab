@@ -3,7 +3,7 @@ Wireshark_Traffic_Analysis_Lab/
 ├── README.md
 ├── script/
 │   └── traffic_generator.py
-├── screenshots/
+├── images/
 │   ├── tcp_syn_packets.png
 │   ├── tcp_conversations.png
 │   ├── io_graph_spike.png
