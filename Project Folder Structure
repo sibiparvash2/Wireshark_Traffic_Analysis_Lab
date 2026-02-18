@@ -1,0 +1,12 @@
+Wireshark_Traffic_Analysis_Lab/
+│
+├── README.md
+├── script/
+│   └── traffic_generator.py
+├── screenshots/
+│   ├── tcp_syn_packets.png
+│   ├── tcp_conversations.png
+│   ├── io_graph_spike.png
+│   └── http_packets.png
+├── notes/
+│   └── analysis_notes.md
