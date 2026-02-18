@@ -64,8 +64,11 @@ Wireshark Filters to Detect Scans example: tcp.flags.syn == 1 && tcp.flags.ack =
 Common Protocol Filters
  
   🖧 HTTP Filters  = http : Show all HTTP traffic    ip.src == 192.168.1.10 and http :  Show HTTP traffic from specific IP
+  
   🖧 SYN Packet Filters = tcp.flags.syn == 1 and tcp.flags.ack == 0 : Show all SYN packets (without ACK)  ,  tcp.flags.syn == 1 :  Show all SYN packets (including SYN-ACK)
+  
   🖧 ACK Packet Filters = tcp.flags.ack == 1 :  Show all ACK packets  ,  ip.addr == 192.168.1.10 and ip.addr == 192.168.1.100 and tcp.flags.ack == 1 : Show ACK packets in a specific conversation
+  
   🖧 Normal HTTP Traffic = http and ip.addr == 192.168.1.10 and ip.addr == 192.168.1.100 :  Show complete HTTP conversation  ,  tcp.flags.syn == 1 and ip.addr == 192.168.1.10 or ip.addr == 192.168.1.100 : Show TCP handshake before HTTP 
 
 
@@ -76,8 +79,11 @@ Common Protocol Filters
   🐧 PYTHON TRAFFIC SIMULATOR SCRIPT USED FOR THE PROJECT
    Purpose  -  A multi-threaded Python script designed to generate HTTP traffic for network analysis and DoS simulation in a controlled lab environment
 
-              Key Features
+              
+ KEY FEATURES
+ ============
 
+ 
 🐍Component	                     Description
 
 🐍Language	        -      Python 3 with socket and threading libraries
