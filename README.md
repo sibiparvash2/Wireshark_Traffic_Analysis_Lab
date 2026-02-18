@@ -65,10 +65,7 @@ Technical Environment:
  - Verified IP addresses for both attacker and target machines
 
  - Ensured controlled and safe testing environment
-   
-  ![TCP SYN Packets](images/kali_Network_bridged_adapter.png)
-
- 
+    
 
 2️⃣ Traffic Monitoring & Packet Analysis
 ========================================
