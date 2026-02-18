@@ -1,13 +1,13 @@
 # Wireshark_Traffic_Analysis_Lab - Network Traffic Analysis Laboratory: Capturing & Analyzing ICMP, TCP, and HTTP Traffic with Wireshark
-
+  ------------------------------
 Project Overview
-
+----------------
 🔹This laboratory project provides a hands-on examination of network communications by capturing and analyzing live traffic between two Linux-based systems. Using Wireshark as the primary analysis tool, I established a controlled testing environment consisting of a Kali Linux machine (acting as the source/attacker) and an Ubuntu machine (acting as the target/victim) to observe, filter, and interpret various network protocols at the packet level.
 
 🔹The objective was to move beyond theoretical networking concepts by visualizing real-time data transmission, understanding protocol behaviors, and identifying security implications observable through traffic analysis. Throughout this project, I systematically generated and captured multiple traffic types to build a comprehensive understanding of how data moves across networks and how malicious activities can be detected.
 
 🔍 Traffic Analysis Fundamentals
-
+   =============================
 🔹ICMP Traffic Analysis: Generated and analyzed ping requests/responses between Kali and Ubuntu systems
 
 🔹Wireshark Graph Utilization: Created and interpreted various Wireshark graphs (I/O Graphs, Flow Graphs) to visualize network traffic patterns
@@ -15,7 +15,7 @@ Project Overview
 🔹Packet Filtering: Implemented display and capture filters to isolate specific traffic types and reduce noise
 
 📡 Network Protocols & Communications
-
+   ===================================
 🔹TCP Three-Way Handshake: Captured and analyzed the complete SYN, SYN-ACK, ACK handshake process
 
 🔹HTTP Traffic: Monitored and inspected unencrypted HTTP request/response cycles
@@ -23,7 +23,7 @@ Project Overview
 🔹Packet-Level Analysis: Examined packet headers, payloads, and protocol-specific fields
 
 🔐 Security Assessment Techniques
-
+    ==============================
 🔹SYN Scanning: Performed and identified port scanning activities, understanding how attackers map network services
 
 🔹Traffic Pattern Recognition: Distinguished between legitimate traffic and potential malicious activities
@@ -38,7 +38,7 @@ Technical Environment
 
 
   🌐 PROJECT SUMMARY 
-
+     ================
   1. Bridged Adapter - Was Necessary - Bridged Adapter makes your virtual machines act as separate devices on your physical network (like having two additional computers connected to your router,IP of both kali (attacker machine) and Ubuntu (target machine) was checked after setting it to Bridged Adapter.
    
 
