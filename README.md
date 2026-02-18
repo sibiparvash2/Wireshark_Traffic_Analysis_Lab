@@ -65,7 +65,12 @@ Technical Environment:
  - Verified IP addresses for both attacker and target machines
 
  - Ensured controlled and safe testing environment
-   
+ - 
+   ![Ubuntu Bridged Adapter](images/ubuntu_network_bridged_adapter.png)
+
+   ![Kali Bridged Adapter](images/kali_network_bridged_adapter.png)
+
+   ![ICMP Traffic](images/icmp_traffic_ping.png)
 
 2️⃣ Traffic Monitoring & Packet Analysis
 ========================================
@@ -75,12 +80,24 @@ Technical Environment:
 Identified:TCP Handshake behavior and TCP Handshake with No SYN-ACK response (Port closed or filtered) Filtered Specified IP traffic from the same IP address,
 Used I/O Graph in Wireshark to monitor traffic spikes and drops.practiced on X-axis and Y-axis
 
+![TCP 3-Way Handshake](images/wireshark_tcp_handshake.png)
+
+![TCP SYN Handshake](images/wireshark_tcp_syn_handshake.png)
+
+![HTTP Protocol Traffic](images/http_protocol_traffic.png)
+
 3️⃣ Port 80 & Retransmission Research
 =====================================
 
  - Conducted detailed analysis of HTTP traffic over Port 80 using Wireshark to examine request packets and server responses. Investigated TCP retransmissions to understand packet loss, network delays, and conditions leading to repeated transmissions during communication.
 
  - Conducted detailed analysis of HTTP traffic over Port 80 using Wireshark to examine request packets and server responses. Investigated TCP retransmissions to understand packet loss, network delays, and conditions leading to repeated transmissions during communication. Additionally, analyzed scenarios where a TCP handshake received no SYN-ACK response, identifying indications of closed or filtered ports and firewall-based traffic control.
+
+   ![Port 80 Retransmission](images/port_80_retransmission.png)
+
+   ![TCP Retransmission](images/retransmission_tcp_protocol.png)
+
+   ![Specified Traffic](images/specified_traffic_from_same_ip.png)
 
 4️⃣ Controlled DoS Simulation (Home Lab)
 =======================================
@@ -89,7 +106,9 @@ Used I/O Graph in Wireshark to monitor traffic spikes and drops.practiced on X-a
 
   - Additionally, documented the observed traffic patterns and response behavior to understand early indicators of potential DoS conditions and basic detection techniques within a monitored network environment.
 
- 
+    ![Traffic Simulator Script](images/traffic_simulator_python_script.png)
+
+    
 Common Protocol Filters
 =======================
 
@@ -171,6 +190,9 @@ Key Components
    Y-Axis     	   -     Traffic volume (packets/sec, bytes/sec, etc.)
    Graph Lines	   -    Different traffic types you define (up to 5)
    Interval	       -   Time bucket size (default 1 sec)
+
+
+![Wireshark IO Graph](images/wireshark_graphs_working_perfectly.png)
 
 
    Configurable Settings
