@@ -39,29 +39,55 @@ Technical Environment
 
   🌐 PROJECT SUMMARY 
      ================
-  1. Bridged Adapter - Was Necessary - Bridged Adapter makes your virtual machines act as separate devices on your physical network (like having two additional computers connected to your router,IP of both kali (attacker machine) and Ubuntu (target machine) was checked after setting it to Bridged Adapter.
-   
 
-  2. ICMP Traffic (ping) - Was the first Traffic I analyzed Where I was using Kali Linux to Ping Ubuntu's IP and analyzed Wireshark To Monitor The ICMP packets.
-   
+     
+  Wireshark Traffic Analysis Lab
+  ==============================
 
+🔹This project focuses on analyzing network traffic in a controlled and isolated lab environment to understand TCP/IP behavior, HTTP communication, and basic attack patterns.
 
-  3. TCP handshake - I was able to capture TCP(trasmission control protocol) Using Wireshark In Ubuntu While I Performed a Network Scanning Using Nmap,A Basic Versions scan can cause alot of Noise which make scanning detectable ,But when  Nmap Timing Templates is used it can make the scan Stealth/Evasion,The ones you want for slow, undetectable scanning are
+🔹The lab was conducted within a virtualized environment using VirtualBox, where both attacker and target machines were configured on a bridged network to simulate real-world communication. Kali Linux was used as the attacking machine, and Ubuntu served as the target system.
 
-   
+🔹Using Wireshark, network packets were captured and analyzed to study TCP handshakes, SYN packets, HTTP requests, retransmissions, and traffic patterns. A controlled DoS attack simulation was performed in a home lab using ddos-ripper to observe traffic spikes and server behavior under stress.
 
- 4. SYN scanning - Performing a Nmap Network SYN scanning If the victim is running Wireshark on their device while you perform an Nmap scan, they can definitely see and identify the scan.There are  Specific
-Wireshark Filters to Detect Scans example: tcp.flags.syn == 1 && tcp.flags.ack == 0 - shows all SYN packets from potential scanner,ip.src == 192.168.1.10 - This helps us to See all traffic from the suspicious IP.
+🔹Additionally, a custom Python traffic generator script was developed to send packets at a controlled rate to avoid overwhelming the server while enabling detailed packet inspection.
 
+🔹This project demonstrates practical understanding of network protocols, packet-level analysis, traffic monitoring, and basic attack detection techniques in a safe lab setup.
 
+1️⃣ Lab Environment Setup
+=========================
 
- 5. HTTP requests - Since I was practicing This Project in a isolation environments,Using my own Home lab,I Had done a DOS attack from Kali Linux Using a tool called DDOS-RIPPER,This made me curious that what would happen when i did a DOS Attack on myself for educations purpose,Which ended up making me research more about HTTP Protocol.When a DOS attack is perform on a websites Which is protected By Web Application Firewall (WAF),DDoS Mitigation Service / CDN (Edge Network),Content Delivery Network (CDN) The TCP packets which is captured When you flood a server with HTTP requests.Server resources (CPU, memory, connection slots) get exhausted.Kernel network queue fills up.Network interface becomes saturated,Application (web server) can't process requests fast enough."TCP Retransmission" - Same packet sent again
+ - Created isolated home lab using VirtualBox
 
+ - Configured network settings to Bridged Mode
 
+ - Verified IP addresses for both attacker and target machines
 
- 6.Wireshark Packet Filtering - Packet filtering in Wireshark allows you to isolate specific traffic from large packet captures, making analysis manageable and focused.If the filter is Applied before capturing packets It would only capture the packets which is needed and Only matching packets are stored 
+ - Ensured controlled and safe testing environment
 
+2️⃣ Traffic Monitoring & Packet Analysis
+========================================
 
+ - Captured and analyzed TCP SYN packets,Full TCP three-way handshake and had retransmission because of port 80 protected by firewall
+
+Identified:TCP Handshake behavior and TCP Handshake with No SYN-ACK response (Port closed or filtered) Filtered Specified IP traffic from the same IP address,
+Used I/O Graph in Wireshark to monitor traffic spikes and drops.practiced on X-axis and Y-axis
+
+3️⃣ Port 80 & Retransmission Research
+=====================================
+
+ - Conducted detailed analysis of HTTP traffic over Port 80 using Wireshark to examine request packets and server responses. Investigated TCP retransmissions to understand packet loss, network delays, and conditions leading to repeated transmissions during communication.
+
+ - Conducted detailed analysis of HTTP traffic over Port 80 using Wireshark to examine request packets and server responses. Investigated TCP retransmissions to understand packet loss, network delays, and conditions leading to repeated transmissions during communication. Additionally, analyzed scenarios where a TCP handshake received no SYN-ACK response, identifying indications of closed or filtered ports and firewall-based traffic control.
+
+4️⃣ Controlled DoS Simulation (Home Lab)
+=======================================
+
+ - Performed a controlled DoS simulation within an isolated virtual lab using ddos-ripper to generate high traffic for analysis purposes. Monitored packet flow, traffic spikes, and server behavior in real time using Wireshark. Evaluated how abnormal traffic patterns appear at the packet level and studied system response under stress in a safe home lab environment.
+
+  - Additionally, documented the observed traffic patterns and response behavior to understand early indicators of potential DoS conditions and basic detection techniques within a monitored network environment.
+
+ 
 Common Protocol Filters
 =======================
 
@@ -76,12 +102,8 @@ Common Protocol Filters
 
 
 
-  7.Basic Traffic Analysis - Basic traffic analysis refers to the fundamental skill of examining network packets to understand what is happening on the network, identify communication patterns, and detect normal   vs abnormal behavior.After completing this project I could look at the captured packets and extracting meaningful information without advanced tools—just observing, filtering, and interpreting confidently.I'm    Knowledgeable about Packet Examination or Identification ,  ICMP Traffic Analysis (Ping) ,  TCP Handshake Analysis , SYN Scanning Analysis ,  HTTP Traffic Analysis ,  Packet Filtering Practice by doing this      projects.
-  
-
-   
-   
-  🐧 PYTHON TRAFFIC SIMULATOR SCRIPT USED FOR THE PROJECT
+ 
+  5️⃣PYTHON TRAFFIC SIMULATOR SCRIPT USED FOR THE PROJECT
   ________________________________________________________
 
   
@@ -115,8 +137,8 @@ Common Protocol Filters
 🐧 Wireshark Observations - When running this script from Kali to Ubuntu, Wireshark captures packets Rapidly TCP handshakes (SYN, SYN-ACK, ACK).HTTP GET requests , TCP connection terminations,Pattern of requests from same source IP can be identify and Using iptables (native Linux firewall) on your Ubuntu machine you can block a specific IP if needed so packets are'nt send to you.
 
 
-I/O Graph Analysis: Traffic Simulator Results :
-==============================================
+6️⃣.I/O Graph Analysis: Traffic Simulator Results :
+===================================================
 
    Graph                 Color	                  Display Filter	                             What It Shows
    =====                 =====                    ==============                              ===============   
@@ -137,16 +159,16 @@ Wireshark I/O Graph
   🖧The I/O Graph (Input/Output Graph) is a powerful visualization tool in Wireshark that displays network traffic over time. It plots packets, bytes, or custom metrics on a timeline, allowing you to see patterns, spikes, and anomalies in your captured data.
 
       
-       
+        
 Key Components
 ==============
 
   Element	What It Does
   ---------------------
-   X-Axis	               Time (seconds/minutes/hours)
-   Y-Axis     	         Traffic volume (packets/sec, bytes/sec, etc.)
-   Graph Lines	         Different traffic types you define (up to 5)
-   Interval	             Time bucket size (default 1 sec)
+   X-Axis	         -      Time (seconds/minutes/hours)
+   Y-Axis     	   -     Traffic volume (packets/sec, bytes/sec, etc.)
+   Graph Lines	   -    Different traffic types you define (up to 5)
+   Interval	       -   Time bucket size (default 1 sec)
 
 
    Configurable Settings
@@ -161,29 +183,13 @@ Key Components
 
 - SMA Period: Smoothing to show trends through noise
 
-- What You Can Detect
-- --------------------
- - Scenario	Visual Pattern
- - Normal traffic	Steady, consistent line
-  - DoS attack	Massive sustained spike
-  - Port scan	Brief, intense SYN spike
-   - Network congestion	Sawtooth pattern + retransmissions
-   - Application issue	Sudden drop in specific protocol
+- Used Wireshark I/O graphs with SMA smoothing to visualize trends hidden in raw packets, allowing comparison of multiple traffic types simultaneously. Detected patterns such as steady lines for normal traffic, spikes for DoS or port scans, sawtooth shapes for congestion, and drops indicating application issues, enabling quick identification of attacks and pinpointing problem times directly from the graph.
 
-   - Why It's Useful
-   -----------------
-- See patterns invisible in packet lists
 
-- Compare multiple traffic types simultaneously
+- IN THIS PROJECT [REPORT]
+  ------------------------
 
-- Identify attacks at a glance
-
-- Pinpoint problem times by clicking graph to jump to packets
-
-- IN THIS PROJECT
-  ----------------
-
-  Your graph showed:
+  The Graph showed:
 
 =Blue line: All packets (total traffic)
 
