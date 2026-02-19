@@ -157,7 +157,7 @@ Key Components
   ================
 
   1.http_protocol_traffic
-  =======================
+  -----------------------
 
  - This report helps you understand what normal operating system traffic looks like.
 
@@ -170,7 +170,7 @@ Key Components
  - fig.01
 
  - 2.tcp_syn_scan
- - ==============
+   ---------------
 
  - This report shows multiple TCP SYN packets being sent from 192.168.1.6 to 192.168.1.14 on different ports.
    
@@ -183,7 +183,7 @@ Key Components
  - fig.02
 
  - 3.ICMP_protocol (ping)
- - ======================
+ - -----------------------
 
  - ICMP ping is often used to check whether a system is alive before launching further attacks.
   
@@ -196,7 +196,7 @@ Key Components
  - fig.03
 
  - 4.Continuous TCP Retransmissions (SYN to Port 80)
- - =================================================
+ - --------------------------------------------------
 
  - The capture shows repeated TCP retransmissions from 192.168.1.6 to 192.168.1.14 on port 80.
  
@@ -212,10 +212,10 @@ Key Components
  - fig.04
 
  - 5.Targeted Traffic Filter
- - =========================
+ - -------------------------
 
  - This capture is filtered to show traffic involving 192.168.1.6, making the analysis more focused and efficient.
- -
+ 
  - It clearly highlights outgoing connection attempts from this host to 192.168.1.14.
  
  - Using filters like this demonstrates structured and professional packet analysis skills.
@@ -227,7 +227,7 @@ Key Components
  - fig.05
 
  - 6.Wireshark Graph Analysis
- - ==========================
+ - --------------------------
 
  - Traffic Volume Analysis Using I/O Graph.The Wireshark I/O Graph shows packet flow over time, measured in packets per second.the yellow line represents overall traffic, which fluctuates between moderate and       high levels throughout the capture.This indicates dynamic network activity rather than a stable or idle connection.
 
