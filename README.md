@@ -153,25 +153,11 @@ Key Components
 
 
 
-I/O Graph Analysis: Traffic Simulator Results :
-===============================================
-
-   Graph                 Color	                  Display Filter	                             What It Shows
-   =====                 =====                    ==============                              ===============   
- 
- 🔹 All Packets         	Blue	                      (none)	                           Total network traffic (all protocols)
- 
-  
- 🔹 TCP Errors        	  Red                    	tcp.analysis.flags	                 TCP problems (retransmissions, dup ACKs, etc.)
- 
-  
-  🔹 Filtered packets 	  Green                  	 tcp.port==80	                         HTTP/port 80 traffic specifically
-
-
 - PROJECT [REPORT]
   ================
 
   1.http_protocol_traffic
+  =======================
 
  - This report helps you understand what normal operating system traffic looks like.
 
@@ -184,6 +170,7 @@ I/O Graph Analysis: Traffic Simulator Results :
  - fig.01
 
  - 2.tcp_syn_scan
+ - ==============
 
  - This report shows multiple TCP SYN packets being sent from 192.168.1.6 to 192.168.1.14 on different ports.
    
@@ -196,6 +183,7 @@ I/O Graph Analysis: Traffic Simulator Results :
  - fig.02
 
  - 3.ICMP_protocol (ping)
+ - ======================
 
  - ICMP ping is often used to check whether a system is alive before launching further attacks.
   
@@ -208,6 +196,7 @@ I/O Graph Analysis: Traffic Simulator Results :
  - fig.03
 
  - 4.Continuous TCP Retransmissions (SYN to Port 80)
+ - =================================================
 
  - The capture shows repeated TCP retransmissions from 192.168.1.6 to 192.168.1.14 on port 80.
  
@@ -223,6 +212,7 @@ I/O Graph Analysis: Traffic Simulator Results :
  - fig.04
 
  - 5.Targeted Traffic Filter
+ - =========================
 
  - This capture is filtered to show traffic involving 192.168.1.6, making the analysis more focused and efficient.
  -
@@ -237,6 +227,7 @@ I/O Graph Analysis: Traffic Simulator Results :
  - fig.05
 
  - 6.Wireshark Graph Analysis
+ - ==========================
 
  - Traffic Volume Analysis Using I/O Graph.The Wireshark I/O Graph shows packet flow over time, measured in packets per second.the yellow line represents overall traffic, which fluctuates between moderate and       high levels throughout the capture.This indicates dynamic network activity rather than a stable or idle connection.
 
