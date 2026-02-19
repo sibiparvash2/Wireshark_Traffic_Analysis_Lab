@@ -65,13 +65,8 @@ Technical Environment:
  - Verified IP addresses for both attacker and target machines
 
  - Ensured controlled and safe testing environment
- - 
-   ![Ubuntu Bridged Adapter](images/ubuntu_network_bridged_adapter.png)
 
-   ![Kali Bridged Adapter](images/kali_network_bridged_adapter.png)
-
-   ![ICMP Traffic](images/icmp_traffic_ping.png)
-
+   
 2️⃣ Traffic Monitoring & Packet Analysis
 ========================================
 
@@ -80,12 +75,6 @@ Technical Environment:
 Identified:TCP Handshake behavior and TCP Handshake with No SYN-ACK response (Port closed or filtered) Filtered Specified IP traffic from the same IP address,
 Used I/O Graph in Wireshark to monitor traffic spikes and drops.practiced on X-axis and Y-axis
 
-![TCP 3-Way Handshake](images/wireshark_tcp_handshake.png)
-
-![TCP SYN Handshake](images/wireshark_tcp_syn_handshake.png)
-
-![HTTP Protocol Traffic](images/http_protocol_traffic.png)
-
 3️⃣ Port 80 & Retransmission Research
 =====================================
 
@@ -93,11 +82,6 @@ Used I/O Graph in Wireshark to monitor traffic spikes and drops.practiced on X-a
 
  - Conducted detailed analysis of HTTP traffic over Port 80 using Wireshark to examine request packets and server responses. Investigated TCP retransmissions to understand packet loss, network delays, and conditions leading to repeated transmissions during communication. Additionally, analyzed scenarios where a TCP handshake received no SYN-ACK response, identifying indications of closed or filtered ports and firewall-based traffic control.
 
-   ![Port 80 Retransmission](images/port_80_retransmission.png)
-
-   ![TCP Retransmission](images/retransmission_tcp_protocol.png)
-
-   ![Specified Traffic](images/specified_traffic_from_same_ip.png)
 
 4️⃣ Controlled DoS Simulation (Home Lab)
 =======================================
@@ -105,8 +89,6 @@ Used I/O Graph in Wireshark to monitor traffic spikes and drops.practiced on X-a
  - Performed a controlled DoS simulation within an isolated virtual lab using ddos-ripper to generate high traffic for analysis purposes. Monitored packet flow, traffic spikes, and server behavior in real time using Wireshark. Evaluated how abnormal traffic patterns appear at the packet level and studied system response under stress in a safe home lab environment.
 
   - Additionally, documented the observed traffic patterns and response behavior to understand early indicators of potential DoS conditions and basic detection techniques within a monitored network environment.
-
-    ![Traffic Simulator Script](images/traffic_simulator_python_script.png)
 
     
 Common Protocol Filters
@@ -131,7 +113,11 @@ Common Protocol Filters
    Purpose  -  A multi-threaded Python script designed to generate HTTP traffic for network analysis and DoS simulation in a controlled lab environment
    =======
 
+🐧 This Simulates Light traffic load on web server and Multiple concurrent connections from single source It Uses Raw socket communication (bypasses browser/curl) and Basic HTTP flood pattern for DoS analysis
 
+
+   
+🐧 Wireshark Observations - When running this script from Kali to Ubuntu, Wireshark captures packets Rapidly TCP handshakes (SYN, SYN-ACK, ACK).HTTP GET requests , TCP connection terminations,Pattern of requests from same source IP can be identify and Using iptables (native Linux firewall) on your Ubuntu machine you can block a specific IP if needed so packets are'nt send to you.
               
  KEY FEATURES
  ============
@@ -150,37 +136,11 @@ Common Protocol Filters
 🐍Request Volume	  -      100 requests per thread (1000 total requests)
 
 
-
-🐧 This Simulates Light traffic load on web server and Multiple concurrent connections from single source It Uses Raw socket communication (bypasses browser/curl) and Basic HTTP flood pattern for DoS analysis
-
-
-   
-🐧 Wireshark Observations - When running this script from Kali to Ubuntu, Wireshark captures packets Rapidly TCP handshakes (SYN, SYN-ACK, ACK).HTTP GET requests , TCP connection terminations,Pattern of requests from same source IP can be identify and Using iptables (native Linux firewall) on your Ubuntu machine you can block a specific IP if needed so packets are'nt send to you.
-
-
-6️⃣.I/O Graph Analysis: Traffic Simulator Results :
-===================================================
-
-   Graph                 Color	                  Display Filter	                             What It Shows
-   =====                 =====                    ==============                              ===============   
- 
- 🔹 All Packets         	Blue	                      (none)	                           Total network traffic (all protocols)
- 
-  
- 🔹 TCP Errors        	  Red                    	tcp.analysis.flags	                 TCP problems (retransmissions, dup ACKs, etc.)
- 
-  
-  🔹 Filtered packets 	  Green                  	 tcp.port==80	                         HTTP/port 80 traffic specifically
-  
-
-
-Wireshark I/O Graph
-===================
+6️⃣Wireshark I/O Graph
+======================
 
   🖧The I/O Graph (Input/Output Graph) is a powerful visualization tool in Wireshark that displays network traffic over time. It plots packets, bytes, or custom metrics on a timeline, allowing you to see patterns, spikes, and anomalies in your captured data.
-
-      
-        
+  
 Key Components
 ==============
 
@@ -192,43 +152,106 @@ Key Components
    Interval	       -   Time bucket size (default 1 sec)
 
 
-![Wireshark IO Graph](images/wireshark_graphs_working_perfectly.png)
+
+I/O Graph Analysis: Traffic Simulator Results :
+===============================================
+
+   Graph                 Color	                  Display Filter	                             What It Shows
+   =====                 =====                    ==============                              ===============   
+ 
+ 🔹 All Packets         	Blue	                      (none)	                           Total network traffic (all protocols)
+ 
+  
+ 🔹 TCP Errors        	  Red                    	tcp.analysis.flags	                 TCP problems (retransmissions, dup ACKs, etc.)
+ 
+  
+  🔹 Filtered packets 	  Green                  	 tcp.port==80	                         HTTP/port 80 traffic specifically
 
 
-   Configurable Settings
-   ----------------------
-- Display Filter: What traffic to include (e.g., http, tcp.flags.syn==1)
+- PROJECT [REPORT]
+  ================
 
-- Style: Line, Bar, Impulse, Dot
+  1.http_protocol_traffic
 
-- Y Axis: Packets, Bytes, Bits, or custom fields
+ - This report helps you understand what normal operating system traffic looks like.
 
-- Color: Visual distinction between graphs
+ - Ubuntu automatically performs connectivity checks, and recognizing this prevents false alarms during analysis.
 
-- SMA Period: Smoothing to show trends through noise
+ - As a cybersecurity student, distinguishing normal behavior from suspicious activity is a critical skill i'm training right now.
 
-- Used Wireshark I/O graphs with SMA smoothing to visualize trends hidden in raw packets, allowing comparison of multiple traffic types simultaneously. Detected patterns such as steady lines for normal traffic, spikes for DoS or port scans, sawtooth shapes for congestion, and drops indicating application issues, enabling quick identification of attacks and pinpointing problem times directly from the graph.
+ - ![HTTP Protocol Traffic](images/http_protocol_traffic.png)
+
+ - fig.01
+
+ - 2.tcp_syn_scan
+
+ - This report shows multiple TCP SYN packets being sent from 192.168.1.6 to 192.168.1.14 on different ports.
+   
+ - When many SYN packets are sent without completing the handshake, it often indicates a port scan attempt.
+   
+ - Recognizing this pattern is important because port scanning is usually the first step before an attack.
+
+ - ![TCP SYN Handshake](images/wireshark_tcp_syn_handshake.png)
+
+ - fig.02
+
+ - 3.ICMP_protocol (ping)
+
+ - ICMP ping is often used to check whether a system is alive before launching further attacks.
+  
+ - Seeing repeated echo requests can indicate host discovery activity in a network scan.
+  
+ - Understanding this pattern helps identify early-stage reconnaissance attempts.
+
+ - ![ICMP Traffic](images/icmp_traffic_ping.png)
+
+ - fig.03
+
+ - 4.Continuous TCP Retransmissions (SYN to Port 80)
+
+ - The capture shows repeated TCP retransmissions from 192.168.1.6 to 192.168.1.14 on port 80.
+ 
+ - Multiple SYN packets are being resent, which means the client is trying to establish a connection but not receiving a response.
+ 
+ - This usually indicates the server is down, the port is closed, or a firewall is blocking the traffic.
+
+ - Repeated SYN packets can sometimes resemble scanning or suspicious activity. Understanding this traffic pattern helps differentiate between normal connection failures and potential attack attempts like SYN
+ - flood behavior
+
+ - ![Port 80 Retransmission](images/port_80_retransmission.png)
+
+ - fig.04
+
+ - 5.Targeted Traffic Filter
+
+ - This capture is filtered to show traffic involving 192.168.1.6, making the analysis more focused and efficient.
+ -
+ - It clearly highlights outgoing connection attempts from this host to 192.168.1.14.
+ 
+ - Using filters like this demonstrates structured and professional packet analysis skills.
+
+ - Different source ports (e.g., 37854, 51754) are attempting connections to the same destination port 80. This suggests repeated connection retries or new session attempts after failure.
+
+ - ![Specified Traffic](images/specified_traffic_from_same_ip.png)
+
+ - fig.05
+
+ - 6.Wireshark Graph Analysis
+
+ - Traffic Volume Analysis Using I/O Graph.The Wireshark I/O Graph shows packet flow over time, measured in packets per second.the yellow line represents overall traffic, which fluctuates between moderate and       high levels throughout the capture.This indicates dynamic network activity rather than a stable or idle connection.
+
+ - The I/O graph makes it easier to understand traffic patterns compared to raw packet lists. It clearly shows when the network was stable and when unusual activity happened - Provides Visual Evidence of Network    Behavior
+
+ - Noticeable Traffic Spikes and Bursts - There are several visible spikes, especially around the 500–600 second mark, where packet rates increase sharply. These bursts suggest heavy communication, repeated
+ - retries, or possible abnormal behavior during that time window. Such spikes often correlate with connection failures, retransmissions, or scanning activity.
+
+ - ![Wireshark IO Graph](images/wireshark_graphs_working_perfectly.png)
+
+ - fig.06
 
 
-- IN THIS PROJECT [REPORT]
-  ------------------------
-
-  The Graph showed:
-
-=Blue line: All packets (total traffic)
-
-=Red line: TCP errors (retransmissions spiking with load)
-
-=Green line: Port 80 traffic (confirming HTTP target)
-
-=The pattern proved your traffic simulator successfully overwhelmed the server
-
-=Present findings visually in reports
 
 
-
-
- 🖧"The I/O graph shows the traffic pattern generated by the multi-threaded Python script. Blue peaks represent bursts of HTTP requests from concurrent threads, reaching 500-600 packets per second. Red TCP error spikes during these peaks confirm the server experienced load sufficient to trigger retransmissions, demonstrating a successful traffic simulation that pushed the target beyond its comfortable processing capacity."
                 
  
 
